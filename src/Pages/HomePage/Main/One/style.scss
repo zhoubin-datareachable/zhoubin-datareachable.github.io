@@ -1,0 +1,38 @@
+/**
+* @file 
+* @date 2021-08-26
+* @author admin 
+* @lastModify admin  2021-08-26
+*/
+/* <------------------------------------ **** CONSTANT IMPORT START **** ------------------------------------ */
+/** Import all the reference constant after this line */
+@import '~/Constant/font.scss';
+@import '~/Constant/color.scss';
+/* <------------------------------------ **** CONSTANT IMPORT END **** ------------------------------------ */
+/* <------------------------------------ **** SECTION1 MIXIN START **** ------------------------------------ */
+/** The demo mixin is ..........*/
+@mixin demo {
+}
+/* <------------------------------------ **** SECTION1 MIXIN END **** ------------------------------------ */
+/* <--------------------------- * SECTION1 * --------------------------- */
+.one_container {
+    display: flex;
+}
+.one_left {
+    margin: 20px;
+}
+.on_link {
+    margin-bottom: 20px;
+}
+.one_editor {
+    width: 1000px;
+    height: 500px;
+    border: 1px solid #eee;
+}
+.one_right {
+    margin-top: 40px;
+}
+.one_select {
+    margin-bottom: 20px;
+}
+/* <--------------------------- * SECTION1 * --------------------------- */
