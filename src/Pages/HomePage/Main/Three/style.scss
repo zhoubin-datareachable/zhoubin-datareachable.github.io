@@ -15,4 +15,16 @@
 }
 /* <------------------------------------ **** SECTION1 MIXIN END **** ------------------------------------ */
 /* <--------------------------- * SECTION1 * --------------------------- */
+.three_container {
+    display: flex;
+}
+.three_left {
+    margin: 20px;
+}
+.three_editor {
+    border: 1px solid #eee;
+}
+.three_right {
+    margin-top: 20px;
+}
 /* <--------------------------- * SECTION1 * --------------------------- */
