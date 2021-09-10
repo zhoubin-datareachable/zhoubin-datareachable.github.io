@@ -6,8 +6,8 @@
  */
 /* <------------------------------------ **** DEPENDENCE IMPORT START **** ------------------------------------ */
 /** This section will include all the necessary dependence for this tsx file */
-import React, { useState } from 'react';
-import { Row, Col } from 'antd';
+import React from 'react';
+import { Row } from 'antd';
 import { Redirect, Route } from 'react-router-dom';
 import One from './One';
 import Two from './Two';

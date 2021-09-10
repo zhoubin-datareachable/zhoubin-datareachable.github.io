@@ -6,7 +6,7 @@
  */
 /* <------------------------------------ **** DEPENDENCE IMPORT START **** ------------------------------------ */
 /** This section will include all the necessary dependence for this tsx file */
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import AceEditor from 'react-ace';
 import 'ace-builds/src-noconflict/mode-java';
 import 'ace-builds/src-noconflict/mode-typescript';
@@ -27,6 +27,23 @@ const Two = (): JSX.Element => {
     const [primeval, setPrimeval] = useState('');
     const [font, setFont] = useState('');
     const [inputV, setInputV] = useState('');
+
+    useEffect(() => {
+        const svg = localStorage.getItem('svg');
+        const icon = localStorage.getItem('icon');
+        if (svg) {
+            setPrimeval(svg);
+            general(svg);
+        }
+        if (icon) {
+            setInputV(icon);
+        }
+        if (svg && icon) {
+            general(svg, icon);
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
+
     /* <------------------------------------ **** STATE END **** ------------------------------------ */
     /* <------------------------------------ **** PARAMETER START **** ------------------------------------ */
     /************* This section will include this component parameter *************/
@@ -39,6 +56,7 @@ const Two = (): JSX.Element => {
         }
         return str;
     }
+
     function general(newValue: string, iconName = '') {
         try {
             const svg_container = document.getElementById('svg_container');
@@ -75,6 +93,7 @@ const Two = (): JSX.Element => {
     function onChange(newValue) {
         setPrimeval(newValue);
         general(newValue);
+        localStorage.setItem('svg', newValue);
     }
     /* <------------------------------------ **** FUNCTION END **** ------------------------------------ */
     return (
@@ -83,9 +102,11 @@ const Two = (): JSX.Element => {
                 <div className={style.on_link}>
                     图标名称：
                     <Input
+                        value={inputV}
                         onChange={(e) => {
                             setInputV(e.currentTarget.value);
                             general(primeval, e.currentTarget.value);
+                            localStorage.setItem('icon', e.currentTarget.value);
                         }}
                     />
                 </div>
@@ -97,9 +118,10 @@ const Two = (): JSX.Element => {
                         theme="github"
                         showGutter={false}
                         wrapEnabled={true}
+                        value={primeval}
                         fontSize={16}
                         width="1000px"
-                        height="300px"
+                        height="200px"
                         onChange={onChange}
                         name="UNIQUE_ID_OF_DIV"
                         editorProps={{ $blockScrolling: true }}

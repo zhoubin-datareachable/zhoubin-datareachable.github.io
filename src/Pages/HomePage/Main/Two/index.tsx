@@ -6,8 +6,7 @@
  */
 /* <------------------------------------ **** DEPENDENCE IMPORT START **** ------------------------------------ */
 /** This section will include all the necessary dependence for this tsx file */
-import React, { useState } from 'react';
-import { Row, Col, Input, Select } from 'antd';
+import React, { useEffect, useState } from 'react';
 import AceEditor from 'react-ace';
 import 'ace-builds/src-noconflict/mode-java';
 import 'ace-builds/src-noconflict/mode-typescript';
@@ -27,6 +26,13 @@ const Two = (): JSX.Element => {
     const [primeval, setPrimeval] = useState('');
     const [actionStr, setActionStr] = useState('');
     const [reducerStr, setReducerStr] = useState('');
+    useEffect(() => {
+        const type = localStorage.getItem('type');
+        if (type) {
+            setPrimeval(type);
+            general(type);
+        }
+    }, []);
     /* <------------------------------------ **** STATE END **** ------------------------------------ */
     /* <------------------------------------ **** PARAMETER START **** ------------------------------------ */
     /************* This section will include this component parameter *************/
@@ -74,7 +80,9 @@ const Two = (): JSX.Element => {
     function onChange(newValue) {
         setPrimeval(newValue);
         general(newValue);
+        localStorage.setItem('type', newValue);
     }
+
     /* <------------------------------------ **** FUNCTION END **** ------------------------------------ */
     return (
         <div className={style.two_container}>
@@ -85,6 +93,7 @@ const Two = (): JSX.Element => {
                         className={style.two_editor}
                         mode="java"
                         theme="github"
+                        value={primeval}
                         showGutter={false}
                         wrapEnabled={true}
                         fontSize={16}

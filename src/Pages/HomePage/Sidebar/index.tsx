@@ -6,8 +6,8 @@
  */
 /* <------------------------------------ **** DEPENDENCE IMPORT START **** ------------------------------------ */
 /** This section will include all the necessary dependence for this tsx file */
-import React, { useState } from 'react';
-import { Row, Col, Menu } from 'antd';
+import React from 'react';
+import { Row, Menu } from 'antd';
 import { useHistory } from 'react-router';
 /* <------------------------------------ **** DEPENDENCE IMPORT END **** ------------------------------------ */
 /* <------------------------------------ **** INTERFACE START **** ------------------------------------ */

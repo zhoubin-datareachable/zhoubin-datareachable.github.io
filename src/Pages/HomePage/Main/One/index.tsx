@@ -6,8 +6,8 @@
  */
 /* <------------------------------------ **** DEPENDENCE IMPORT START **** ------------------------------------ */
 /** This section will include all the necessary dependence for this tsx file */
-import React, { useState } from 'react';
-import { Row, Col, Input, Select } from 'antd';
+import React, { useState, useEffect } from 'react';
+import { Input, Select } from 'antd';
 import AceEditor from 'react-ace';
 import 'ace-builds/src-noconflict/mode-java';
 import 'ace-builds/src-noconflict/mode-typescript';
@@ -30,6 +30,22 @@ const One = (): JSX.Element => {
     const [apiV, setApiV] = useState('');
     const [inputV, setInputV] = useState('');
     const { Option } = Select;
+
+    useEffect(() => {
+        const api = localStorage.getItem('api');
+        const apiValue = localStorage.getItem('apiV');
+        if (api) {
+            setPrimeval(api);
+            general(api);
+        }
+        if (apiValue) {
+            setInputV(apiValue);
+        }
+        if (api && apiValue) {
+            general(api, apiValue);
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
     /* <------------------------------------ **** STATE END **** ------------------------------------ */
     /* <------------------------------------ **** PARAMETER START **** ------------------------------------ */
     /************* This section will include this component parameter *************/
@@ -92,7 +108,9 @@ const One = (): JSX.Element => {
     function onChange(newValue) {
         setPrimeval(newValue);
         general(newValue);
+        localStorage.setItem('api', newValue);
     }
+
     /* <------------------------------------ **** FUNCTION END **** ------------------------------------ */
     return (
         <div className={style.one_container}>
@@ -100,9 +118,11 @@ const One = (): JSX.Element => {
                 <div className={style.on_link}>
                     地址：
                     <Input
+                        value={inputV}
                         onChange={(e) => {
                             setInputV(e.currentTarget.value);
                             general(primeval, e.currentTarget.value);
+                            localStorage.setItem('apiV', e.currentTarget.value);
                         }}
                     />
                 </div>
@@ -117,6 +137,7 @@ const One = (): JSX.Element => {
                         fontSize={16}
                         width="700px"
                         height="300px"
+                        value={primeval}
                         onChange={onChange}
                         name="UNIQUE_ID_OF_DIV"
                         editorProps={{ $blockScrolling: true }}
