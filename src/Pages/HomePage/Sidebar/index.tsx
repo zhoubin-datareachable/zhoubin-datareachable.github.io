@@ -29,19 +29,21 @@ const Sidebar = (): JSX.Element => {
     return (
         <Row>
             <Menu
-                defaultSelectedKeys={['1']}
-                defaultOpenKeys={['sub1']}
+                selectedKeys={[
+                    history.location.pathname.slice(1, history.location.pathname.length),
+                ]}
                 mode="inline"
                 theme="dark"
                 style={{ width: '200px', height: 'calc(100vh - 50px)', backgroundColor: '#333645' }}
                 onSelect={(p) => {
                     history.push(`/${p.key}`);
+                    localStorage.setItem('path', `/${p.key}`);
                 }}
             >
                 <Menu.Item key="1">生成API接口</Menu.Item>
                 <Menu.Item key="2">生成ACTION</Menu.Item>
                 <Menu.Item key="3">SVG</Menu.Item>
-                <Menu.Item key="4">记事本</Menu.Item>
+                <Menu.Item key="4">git提交</Menu.Item>
             </Menu>
         </Row>
     );

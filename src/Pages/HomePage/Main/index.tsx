@@ -6,9 +6,9 @@
  */
 /* <------------------------------------ **** DEPENDENCE IMPORT START **** ------------------------------------ */
 /** This section will include all the necessary dependence for this tsx file */
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Row } from 'antd';
-import { Redirect, Route } from 'react-router-dom';
+import { Redirect, Route, useHistory } from 'react-router-dom';
 import One from './One';
 import Two from './Two';
 import Three from './Three';
@@ -21,12 +21,19 @@ import Four from './Four';
 const Main = (): JSX.Element => {
     /* <------------------------------------ **** STATE START **** ------------------------------------ */
     /************* This section will include this component HOOK function *************/
+    const history = useHistory();
     /* <------------------------------------ **** STATE END **** ------------------------------------ */
     /* <------------------------------------ **** PARAMETER START **** ------------------------------------ */
     /************* This section will include this component parameter *************/
     /* <------------------------------------ **** PARAMETER END **** ------------------------------------ */
     /* <------------------------------------ **** FUNCTION START **** ------------------------------------ */
     /************* This section will include this component general function *************/
+    useEffect(() => {
+        const path = localStorage.getItem('path');
+        if (path) {
+            history.push(path);
+        }
+    }, []);
     /* <------------------------------------ **** FUNCTION END **** ------------------------------------ */
     return (
         <Row>
