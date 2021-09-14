@@ -7,44 +7,25 @@
 /* <------------------------------------ **** DEPENDENCE IMPORT START **** ------------------------------------ */
 /** This section will include all the necessary dependence for this tsx file */
 import React from 'react';
-import { Row, Menu } from 'antd';
-import { useHistory } from 'react-router';
+import { Row } from 'antd';
+import E from 'wangeditor';
+
 /* <------------------------------------ **** DEPENDENCE IMPORT END **** ------------------------------------ */
 /* <------------------------------------ **** INTERFACE START **** ------------------------------------ */
 /** This section will include all the interface for this tsx file */
 /* <------------------------------------ **** INTERFACE END **** ------------------------------------ */
 /* <------------------------------------ **** FUNCTION COMPONENT START **** ------------------------------------ */
-const Sidebar = (): JSX.Element => {
+const Four = (): JSX.Element => {
     /* <------------------------------------ **** STATE START **** ------------------------------------ */
     /************* This section will include this component HOOK function *************/
-    const history = useHistory();
     /* <------------------------------------ **** STATE END **** ------------------------------------ */
     /* <------------------------------------ **** PARAMETER START **** ------------------------------------ */
     /************* This section will include this component parameter *************/
     /* <------------------------------------ **** PARAMETER END **** ------------------------------------ */
     /* <------------------------------------ **** FUNCTION START **** ------------------------------------ */
     /************* This section will include this component general function *************/
-
     /* <------------------------------------ **** FUNCTION END **** ------------------------------------ */
-    return (
-        <Row>
-            <Menu
-                defaultSelectedKeys={['1']}
-                defaultOpenKeys={['sub1']}
-                mode="inline"
-                theme="dark"
-                style={{ width: '200px', height: 'calc(100vh - 50px)', backgroundColor: '#333645' }}
-                onSelect={(p) => {
-                    history.push(`/${p.key}`);
-                }}
-            >
-                <Menu.Item key="1">生成API接口</Menu.Item>
-                <Menu.Item key="2">生成ACTION</Menu.Item>
-                <Menu.Item key="3">SVG</Menu.Item>
-                <Menu.Item key="4">记事本</Menu.Item>
-            </Menu>
-        </Row>
-    );
+    return <Row></Row>;
 };
-export default Sidebar;
+export default Four;
 /* <------------------------------------ **** FUNCTION COMPONENT END **** ------------------------------------ */

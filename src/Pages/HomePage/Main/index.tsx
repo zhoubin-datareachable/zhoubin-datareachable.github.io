@@ -12,6 +12,7 @@ import { Redirect, Route } from 'react-router-dom';
 import One from './One';
 import Two from './Two';
 import Three from './Three';
+import Four from './Four';
 /* <------------------------------------ **** DEPENDENCE IMPORT END **** ------------------------------------ */
 /* <------------------------------------ **** INTERFACE START **** ------------------------------------ */
 /** This section will include all the interface for this tsx file */
@@ -33,6 +34,7 @@ const Main = (): JSX.Element => {
             <Route path="/1" exact component={One} />
             <Route path="/2" exact component={Two} />
             <Route path="/3" exact component={Three} />
+            <Route path="/4" exact component={Four} />
         </Row>
     );
 };

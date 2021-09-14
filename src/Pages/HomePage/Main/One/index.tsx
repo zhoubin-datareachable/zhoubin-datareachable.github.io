@@ -25,7 +25,7 @@ const One = (): JSX.Element => {
     /* <------------------------------------ **** STATE START **** ------------------------------------ */
     /************* This section will include this component HOOK function *************/
     const [primeval, setPrimeval] = useState('');
-    const [m, setM] = useState('get');
+    const [m, setM] = useState('post');
     const [jsonV, setJsonV] = useState('');
     const [apiV, setApiV] = useState('');
     const [inputV, setInputV] = useState('');
@@ -54,10 +54,9 @@ const One = (): JSX.Element => {
     /************* This section will include this component general function *************/
     function general(newValue: string, inputValue = '', m2 = '') {
         try {
-            console.log('change', newValue);
             const json = JSON.parse(newValue);
             let jsonStr = '{\n';
-
+            setM('post');
             /** json */
             Object.keys(json).forEach((item) => {
                 // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
@@ -102,7 +101,36 @@ const One = (): JSX.Element => {
 
             /** action */
         } catch (error) {
-            console.log('error');
+            try {
+                setM('get');
+                const paramsStr = newValue.split(/\n\r/);
+                let urlStr = 'xxxxxxxx';
+                if (inputV || inputValue) {
+                    urlStr = /api.*/.exec(inputValue || inputV)?.toString() || '';
+                }
+                console.log(paramsStr);
+
+                let ApiStr = 'export const getProjectDetail = (params:';
+                let pStr = '{\n';
+                for (let i = 0; i < paramsStr.length; i++) {
+                    const temp = paramsStr[i].trim().split(/\n/);
+                    const key = temp[0].trim();
+                    const value = temp[1].trim() === 'required' ? temp[2].trim() : temp[1].trim();
+                    const isSelect = /可选/.test(paramsStr[i]);
+                    pStr += `\t${key}${isSelect ? '?' : ''}:${value}\n`;
+                }
+                pStr += '}';
+                ApiStr += pStr;
+                ApiStr += '): Promise<AxiosResponse> => {\n';
+                ApiStr += '\treturn axios.request({\n';
+                ApiStr += '\t\tmethod:"get",\n';
+                ApiStr += "\t\turl:'/" + urlStr + "',\n";
+                ApiStr += '\t\tparams\n\t});\n};';
+                setApiV(ApiStr);
+                setJsonV(pStr);
+            } catch (error) {
+                //
+            }
         }
     }
     function onChange(newValue) {
@@ -174,7 +202,7 @@ const One = (): JSX.Element => {
             <div className={style.one_right}>
                 <div className={style.one_select}>
                     <Select
-                        defaultValue="get"
+                        value={m}
                         style={{ width: 120 }}
                         onChange={(value) => {
                             setM(value);
