@@ -164,7 +164,7 @@ const Four = (): JSX.Element => {
         const date = new Date();
         const dateStr = `${date.getFullYear()}/${
             date.getMonth() <= 8 ? '0' + (date.getMonth() + 1).toString() : date.getMonth() + 1
-        }/${date.getDay() <= 9 ? '0' + date.getDay().toString() : date.getDay()}`;
+        }/${date.getDate() <= 9 ? '0' + date.getDate().toString() : date.getDate()}`;
         return dateStr;
     };
 

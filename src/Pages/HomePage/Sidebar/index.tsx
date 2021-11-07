@@ -44,6 +44,7 @@ const Sidebar = (): JSX.Element => {
                 <Menu.Item key="2">生成ACTION</Menu.Item>
                 <Menu.Item key="3">SVG</Menu.Item>
                 <Menu.Item key="4">git提交</Menu.Item>
+                <Menu.Item key="5">yaml解析</Menu.Item>
             </Menu>
         </Row>
     );

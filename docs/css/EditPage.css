@@ -8,3 +8,5 @@
 
 .emoji_container{margin:20px;display:flex;flex-direction:column}.emoji{display:flex;flex-wrap:wrap}.emoji li{display:flex;width:270px;align-items:center;margin-right:10px;margin-bottom:10px;padding:2px 2px;border:1px solid #ddd;cursor:pointer;font-size:14px;font-weight:bold}.emoji div{display:flex;flex-direction:column;margin-right:3px}li{list-style:none}
 
+.five_container{margin:20px}.three_editor{margin-top:10px;height:1000px;border:1px solid #eee}
+

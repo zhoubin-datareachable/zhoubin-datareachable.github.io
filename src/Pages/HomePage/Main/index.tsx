@@ -13,6 +13,7 @@ import One from './One';
 import Two from './Two';
 import Three from './Three';
 import Four from './Four';
+import Five from './Five';
 /* <------------------------------------ **** DEPENDENCE IMPORT END **** ------------------------------------ */
 /* <------------------------------------ **** INTERFACE START **** ------------------------------------ */
 /** This section will include all the interface for this tsx file */
@@ -33,7 +34,7 @@ const Main = (): JSX.Element => {
         if (path) {
             history.push(path);
         }
-    }, []);
+    }, [history]);
     /* <------------------------------------ **** FUNCTION END **** ------------------------------------ */
     return (
         <Row>
@@ -42,6 +43,7 @@ const Main = (): JSX.Element => {
             <Route path="/2" exact component={Two} />
             <Route path="/3" exact component={Three} />
             <Route path="/4" exact component={Four} />
+            <Route path="/5" exact component={Five} />
         </Row>
     );
 };
